@@ -46,7 +46,7 @@ class TutorController (
     }
     @PutMapping("/{id}")
     @Transactional
-    fun updateTutor(@PathVariable id: Long,  @Valid tutorRequestDTO: TutorRequestDTO)
+    fun updateTutor(@PathVariable id: Long, @RequestBody  @Valid tutorRequestDTO: TutorRequestDTO)
             : ResponseEntity<TutorResponseDTO>  {
         val tutorResponseDTO = tutorService.update(id, tutorRequestDTO)
         return  ResponseEntity.ok().body(tutorResponseDTO)
