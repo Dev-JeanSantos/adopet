@@ -11,6 +11,12 @@ data class Tutor (
         var name: String,
         var email: String,
         var password: String,
+        var cpf: String,
+        var address: String,
+        var city: String,
+        var uf: String,
+        var phone: String,
+        var image: String?,
 )
 
 

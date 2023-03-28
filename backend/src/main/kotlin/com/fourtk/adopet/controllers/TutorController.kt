@@ -2,6 +2,7 @@ package com.fourtk.adopet.controllers
 
 import com.fourtk.adopet.TutorResponsesDTO.TutorResponseDTO
 import com.fourtk.adopet.TutorRequestsDTO.TutorRequestDTO
+import com.fourtk.adopet.TutorResponsesDTO.TutorResponsePaginationDTO
 import com.fourtk.adopet.services.TutorService
 import jakarta.validation.Valid
 import org.springframework.data.domain.Page
@@ -23,8 +24,7 @@ class TutorController (
             uriBuilder: UriComponentsBuilder
     ): ResponseEntity<TutorResponseDTO> {
         val tutorResponseDTO = tutorService.insertTutor(tutorRequestDTO)
-        val uri = uriBuilder.path("/tutor/${tutorResponseDTO.id}").build().toUri()
-        println(tutorRequestDTO)
+        val uri = uriBuilder.path("/tutor/").build().toUri()
         return ResponseEntity.created(uri).body(tutorResponseDTO)
     }
 
@@ -32,7 +32,7 @@ class TutorController (
     fun listTutors(
         @RequestParam(required = false) nameTutor: String?,
         @PageableDefault(size = 5, sort = ["name"], direction = Sort.Direction.DESC) pagination: Pageable
-    ): Page<TutorResponseDTO> {
+    ): Page<TutorResponsePaginationDTO> {
         return tutorService.listar(nameTutor, pagination)
     }
 

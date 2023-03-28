@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component
 class TutorResponseMapper: Mapper<Tutor, TutorResponseDTO> {
     override fun map(t: Tutor): TutorResponseDTO {
         return TutorResponseDTO(
-                id = t.id,
                 name = t.name,
                 email = t.email
         )

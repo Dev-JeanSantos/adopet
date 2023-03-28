@@ -12,5 +12,16 @@ data class TutorRequestDTO (
         @field:Email
         val email: String,
         @field:NotEmpty
-        val password: String
+        val password: String,
+        @field:NotEmpty
+        val cpf: String,
+        @field:NotEmpty
+        val address: String,
+        @field:NotEmpty
+        val city: String,
+        @field:NotEmpty
+        val uf: String,
+        @field:NotEmpty
+        val phone: String,
+        val image: String? = ""
 )
