@@ -1,14 +1,15 @@
 package com.fourtk.adopet.controllers
 
-import com.fourtk.adopet.TutorResponseDTO.TutorResponseDTO
-import com.fourtk.adopet.requestDTO.TutorRequestDTO
+import com.fourtk.adopet.TutorResponsesDTO.TutorResponseDTO
+import com.fourtk.adopet.TutorRequestsDTO.TutorRequestDTO
 import com.fourtk.adopet.services.TutorService
 import jakarta.validation.Valid
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
@@ -26,4 +27,13 @@ class TutorController (
         println(tutorRequestDTO)
         return ResponseEntity.created(uri).body(tutorResponseDTO)
     }
+
+    @GetMapping
+    fun listTutors(
+        @RequestParam(required = false) nameTutor: String?,
+        @PageableDefault(size = 5, sort = ["name"], direction = Sort.Direction.DESC) pagination: Pageable
+    ): Page<TutorResponseDTO> {
+        return tutorService.listar(nameTutor, pagination)
+    }
+
 }
