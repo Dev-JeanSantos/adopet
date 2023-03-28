@@ -3,6 +3,7 @@ package com.fourtk.adopet.services
 import com.fourtk.adopet.TutorRequestsDTO.TutorRequestDTO
 import com.fourtk.adopet.TutorResponsesDTO.TutorResponseDTO
 import com.fourtk.adopet.TutorResponsesDTO.TutorResponsePaginationDTO
+import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.TutorRequestMapper
 import com.fourtk.adopet.mappers.TutorResponseMapper
 import com.fourtk.adopet.mappers.TutorResponsePaginationMapper
@@ -10,7 +11,6 @@ import com.fourtk.adopet.repositories.TutorRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import com.fourtk.adopet.exceptions.NotFoundException as NotFoundException
 
 @Service
 class TutorService(
@@ -19,7 +19,7 @@ class TutorService(
     private val tutorResponsePaginationMapper: TutorResponsePaginationMapper,
     private val tutorRepository: TutorRepository,
 
-    val notFoundException: String = "Topic not found!"
+    val notFoundException: String = "Tutor not found!"
 ) {
     fun insertTutor(tutorRequestDTO: TutorRequestDTO): TutorResponseDTO {
         val tutor = tutorRequestMapper.map(tutorRequestDTO)
@@ -47,5 +47,27 @@ class TutorService(
                 orElseThrow{ NotFoundException(notFoundException) }
         return tutorResponsePaginationMapper.map(possibleTutor)
 
+    }
+
+    fun update(id: Long, tutorRequestUpdateDTO: TutorRequestDTO): TutorResponseDTO? {
+        val tutor = tutorRepository.findById(id).orElseThrow(){
+            NotFoundException(notFoundException)
+        }
+        println(tutor)
+        tutor.name = tutorRequestUpdateDTO.name
+        tutor.email = tutorRequestUpdateDTO.email
+        tutor.cpf = tutorRequestUpdateDTO.cpf
+        tutor.address = tutorRequestUpdateDTO.address
+        tutor.city = tutorRequestUpdateDTO.city
+        tutor.uf = tutorRequestUpdateDTO.uf
+        tutor.phone = tutorRequestUpdateDTO.phone
+        tutor.password = tutorRequestUpdateDTO.password
+        tutor.image = tutorRequestUpdateDTO.image
+
+        return tutorResponseMapper.map(tutor)
+    }
+
+    fun delete(id: Long) {
+        val tutor = tutorRepository.deleteById(id)
     }
 }
