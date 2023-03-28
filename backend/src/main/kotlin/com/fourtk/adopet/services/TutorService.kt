@@ -10,13 +10,16 @@ import com.fourtk.adopet.repositories.TutorRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import com.fourtk.adopet.exceptions.NotFoundException as NotFoundException
 
 @Service
 class TutorService(
     private val tutorRequestMapper: TutorRequestMapper,
     private val tutorResponseMapper: TutorResponseMapper,
     private val tutorResponsePaginationMapper: TutorResponsePaginationMapper,
-    private val tutorRepository: TutorRepository
+    private val tutorRepository: TutorRepository,
+
+    val notFoundException: String = "Topic not found!"
 ) {
     fun insertTutor(tutorRequestDTO: TutorRequestDTO): TutorResponseDTO {
         val tutor = tutorRequestMapper.map(tutorRequestDTO)
@@ -37,5 +40,12 @@ class TutorService(
         return tutors.map {
             t -> tutorResponsePaginationMapper.map(t)
         }
+    }
+
+    fun getById(id: Long): TutorResponsePaginationDTO {
+        val possibleTutor = tutorRepository.findById(id).
+                orElseThrow{ NotFoundException(notFoundException) }
+        return tutorResponsePaginationMapper.map(possibleTutor)
+
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
@@ -29,6 +30,7 @@ class TutorController (
     }
 
     @GetMapping
+    @Transactional
     fun listTutors(
         @RequestParam(required = false) nameTutor: String?,
         @PageableDefault(size = 5, sort = ["name"], direction = Sort.Direction.DESC) pagination: Pageable
@@ -36,4 +38,16 @@ class TutorController (
         return tutorService.listar(nameTutor, pagination)
     }
 
+    @GetMapping("/{id}")
+    fun getById(@PathVariable id: Long): TutorResponsePaginationDTO {
+        return tutorService.getById(id)
+    }
+
+//    @PutMapping
+//    @Transactional
+//    fun updateTopic(@RequestBody @Valid updateTopicRequestDTO: UpdateTopicRequestDTO)
+//            : ResponseEntity<TopicResponseDTO>  {
+//        val topicResponseDTO = topicService.update(updateTopicRequestDTO)
+//        return  ResponseEntity.ok().body(topicResponseDTO)
+//    }
 }
