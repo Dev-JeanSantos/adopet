@@ -7,6 +7,7 @@ import com.fourtk.adopet.dtos.TutorResponsesDTO.TutorResponseDTO
 import com.fourtk.adopet.dtos.TutorResponsesDTO.TutorResponsePaginationDTO
 import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.*
+import com.fourtk.adopet.models.Tutor
 import com.fourtk.adopet.repositories.PetRepository
 import com.fourtk.adopet.repositories.TutorRepository
 import org.springframework.data.domain.Page
@@ -27,7 +28,6 @@ class PetService(
         petRepository.save(pet)
         return petResponseMapper.map(pet)
     }
-
 //    fun listar(
 //        nameTutor: String?,
 //        pagination: Pageable

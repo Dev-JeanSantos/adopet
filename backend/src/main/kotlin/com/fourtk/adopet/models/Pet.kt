@@ -14,7 +14,6 @@ data class Pet (
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
         var name: String,
-        var idOwner: Long,
         var age: String,
         @Enumerated(EnumType.STRING)
         var status: PetStatus = PetStatus.AVAILABLE,
@@ -25,7 +24,10 @@ data class Pet (
         @Enumerated(EnumType.STRING)
         var personality: PetPersonality,
         var description: String,
-        var image: String?
+        var image: String?,
+
+        @ManyToOne
+        val tutor: Tutor
 )
 
 

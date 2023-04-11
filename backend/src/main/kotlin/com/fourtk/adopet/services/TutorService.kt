@@ -7,6 +7,7 @@ import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.TutorRequestMapper
 import com.fourtk.adopet.mappers.TutorResponseMapper
 import com.fourtk.adopet.mappers.TutorResponsePaginationMapper
+import com.fourtk.adopet.models.Tutor
 import com.fourtk.adopet.repositories.TutorRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -69,5 +70,9 @@ class TutorService(
 
     fun delete(id: Long) {
         val tutor = tutorRepository.deleteById(id)
+    }
+
+    fun getBYId(idOwner: Long): Tutor {
+        return tutorRepository.getOne(idOwner)
     }
 }
