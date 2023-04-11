@@ -4,8 +4,9 @@ import com.fourtk.adopet.dtos.PetRequestsDTO.PetRequestDTO
 import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponseDTO
 import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponsePaginationDTO
 import com.fourtk.adopet.exceptions.NotFoundException
-import com.fourtk.adopet.mappers.*
-import com.fourtk.adopet.models.Tutor
+import com.fourtk.adopet.mappers.PetRequestMapper
+import com.fourtk.adopet.mappers.PetResponseMapper
+import com.fourtk.adopet.mappers.PetResponsePaginationMapper
 import com.fourtk.adopet.repositories.PetRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -71,11 +72,8 @@ class PetService(
 
     }
 
-//    fun update(id: Long, petRequestDTO: petRequestDTO): petResponseDTO? {
+    fun delete(id: Long) {
+        val pet = petRepository.deleteById(id)
+    }
 
-//    }
-//
-//    fun delete(id: Long) {
-//        val pet = petRepository.deleteById(id)
-//    }
 }

@@ -1,7 +1,6 @@
 package com.fourtk.adopet.models
 
 import jakarta.persistence.*
-import jakarta.validation.constraints.Email
 
 @Entity
 @Table(name = "db_tutor")

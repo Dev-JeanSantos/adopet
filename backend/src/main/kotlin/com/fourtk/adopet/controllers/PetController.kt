@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.PageableDefault
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
@@ -49,10 +50,10 @@ class PetController (
         val petResponseDTO = petService.update(id, petRequestDTO)
         return  ResponseEntity.ok().body(petResponseDTO)
     }
-//    @DeleteMapping("/{id}")
-//    @Transactional
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    fun deleteTutor(@PathVariable id: Long) {
-//        tutorService.delete(id)
-//    }
+    @DeleteMapping("/{id}")
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deletePet(@PathVariable id: Long) {
+        petService.delete(id)
+    }
 }
