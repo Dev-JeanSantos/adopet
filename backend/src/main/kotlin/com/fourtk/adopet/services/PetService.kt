@@ -2,39 +2,48 @@ package com.fourtk.adopet.services
 
 import com.fourtk.adopet.dtos.PetRequestsDTO.PetRequestDTO
 import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponseDTO
+import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponsePaginationDTO
 import com.fourtk.adopet.mappers.*
 import com.fourtk.adopet.repositories.PetRepository
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
 class PetService(
     private val petRequestMapper: PetRequestMapper,
     private val petResponseMapper: PetResponseMapper,
-    private val tutorResponsePaginationMapper: TutorResponsePaginationMapper,
+    private val petResponsePaginationMapper: PetResponsePaginationMapper,
     private val petRepository: PetRepository,
 
-    val notFoundException: String = "Tutor not found!"
+    val notFoundException: String = "Pet not found!"
 ) {
     fun insertPet(petRequestDTO: PetRequestDTO): PetResponseDTO {
         val pet = petRequestMapper.map(petRequestDTO)
         petRepository.save(pet)
         return petResponseMapper.map(pet)
     }
-//    fun listar(
-//        nameTutor: String?,
-//        pagination: Pageable
-//    ): Page<TutorResponsePaginationDTO> {
-//
-//        val tutors = if (nameTutor == null) {
-//            tutorRepository.findAll(pagination)
-//        } else {
-//            tutorRepository.findByName(nameTutor, pagination)
-//        }
-//        return tutors.map {
-//            t -> tutorResponsePaginationMapper.map(t)
-//        }
-//    }
-//
+
+    fun listar(petName: String?, petCity: String?, pagination: Pageable): Page<PetResponsePaginationDTO> {
+
+
+        val pets = if (petName == null && petCity == null) {
+            petRepository.findAll(pagination)
+        } else if (petName != null) {
+            petRepository.findByName(petName, pagination)
+        } else {
+            (petCity != null)
+            petRepository.findByTutorCity(petCity, pagination)
+
+        }
+        return pets.map { t ->
+            petResponsePaginationMapper.map(t)
+        }
+        println(petName)
+
+    }
+
+
 //    fun getById(id: Long): TutorResponsePaginationDTO {
 //        val possibleTutor = tutorRepository.findById(id).
 //                orElseThrow{ NotFoundException(notFoundException) }
