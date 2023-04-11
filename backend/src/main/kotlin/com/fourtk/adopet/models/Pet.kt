@@ -1,11 +1,8 @@
 package com.fourtk.adopet.models
 
-import com.fourtk.adopet.enums.PetCarrying
-import com.fourtk.adopet.enums.PetPersonality
-import com.fourtk.adopet.enums.PetSpecie
-import com.fourtk.adopet.enums.PetStatus
+import com.fourtk.adopet.enums.*
 import jakarta.persistence.*
-import jakarta.validation.constraints.Email
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "db_pet")
@@ -14,7 +11,11 @@ data class Pet (
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Long? = null,
         var name: String,
-        var age: String,
+        var age: Int,
+        @Enumerated(EnumType.STRING)
+        var ageMonthOrYear: PetAgeMonthOrYear,
+        @Enumerated(EnumType.STRING)
+        var genre: PetGenre,
         @Enumerated(EnumType.STRING)
         var status: PetStatus = PetStatus.AVAILABLE,
         @Enumerated(EnumType.STRING)
@@ -25,6 +26,7 @@ data class Pet (
         var personality: PetPersonality,
         var description: String,
         var image: String?,
+        var dateCreate: LocalDateTime = LocalDateTime.now(),
 
         @ManyToOne
         val tutor: Tutor

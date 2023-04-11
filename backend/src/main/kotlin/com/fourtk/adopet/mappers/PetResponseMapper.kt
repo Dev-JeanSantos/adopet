@@ -1,6 +1,6 @@
 package com.fourtk.adopet.mappers
 
-import com.fourtk.adopet.dtos.TutorResponsesDTO.PetResponseDTO
+import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponseDTO
 import com.fourtk.adopet.models.Pet
 import org.springframework.stereotype.Component
 
@@ -18,8 +18,10 @@ class PetResponseMapper: Mapper<Pet, PetResponseDTO> {
             carrying = t.carrying.name,
             specie = t.specie.name,
             personality = t.personality.name,
+            ageMonthOrYear = t.ageMonthOrYear.name,
             description = t.description,
-            image = t.image
+            image = t.image,
+            genre = t.genre.name
         )
     }
 

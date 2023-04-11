@@ -1,12 +1,10 @@
-package com.fourtk.adopet.dtos.TutorRequestsDTO
+package com.fourtk.adopet.dtos.PetRequestsDTO
 
-import com.fourtk.adopet.enums.PetCarrying
-import com.fourtk.adopet.enums.PetPersonality
-import com.fourtk.adopet.enums.PetSpecie
-import com.fourtk.adopet.enums.PetStatus
+import com.fourtk.adopet.enums.*
 import com.fourtk.adopet.models.Tutor
 import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.NotNull
+import jakarta.validation.constraints.Positive
 import jakarta.validation.constraints.Size
 
 data class PetRequestDTO (
@@ -15,10 +13,15 @@ data class PetRequestDTO (
         val name: String,
         @field:NotNull
         val idOwner: Long,
-        @field:NotEmpty
-        val age: String,
+        @field:NotNull
+        @field:Positive
+        val age: Int,
+        @field:NotNull
+        val ageMonthOrYear: PetAgeMonthOrYear,
         @field:NotNull
         val status: PetStatus,
+        @field:NotNull
+        val genre: PetGenre,
         @field:NotNull
         val carrying: PetCarrying,
         @field:NotNull

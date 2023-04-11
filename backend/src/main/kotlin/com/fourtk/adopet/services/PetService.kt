@@ -1,17 +1,9 @@
 package com.fourtk.adopet.services
 
-import com.fourtk.adopet.dtos.TutorRequestsDTO.PetRequestDTO
-import com.fourtk.adopet.dtos.TutorRequestsDTO.TutorRequestDTO
-import com.fourtk.adopet.dtos.TutorResponsesDTO.PetResponseDTO
-import com.fourtk.adopet.dtos.TutorResponsesDTO.TutorResponseDTO
-import com.fourtk.adopet.dtos.TutorResponsesDTO.TutorResponsePaginationDTO
-import com.fourtk.adopet.exceptions.NotFoundException
+import com.fourtk.adopet.dtos.PetRequestsDTO.PetRequestDTO
+import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponseDTO
 import com.fourtk.adopet.mappers.*
-import com.fourtk.adopet.models.Tutor
 import com.fourtk.adopet.repositories.PetRepository
-import com.fourtk.adopet.repositories.TutorRepository
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service

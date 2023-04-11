@@ -1,7 +1,7 @@
 package com.fourtk.adopet.controllers
 
-import com.fourtk.adopet.dtos.TutorRequestsDTO.PetRequestDTO
-import com.fourtk.adopet.dtos.TutorResponsesDTO.PetResponseDTO
+import com.fourtk.adopet.dtos.PetRequestsDTO.PetRequestDTO
+import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponseDTO
 import com.fourtk.adopet.services.PetService
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity

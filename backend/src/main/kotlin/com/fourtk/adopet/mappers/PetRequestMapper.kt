@@ -1,8 +1,7 @@
 package com.fourtk.adopet.mappers
 
-import com.fourtk.adopet.dtos.TutorRequestsDTO.PetRequestDTO
+import com.fourtk.adopet.dtos.PetRequestsDTO.PetRequestDTO
 import com.fourtk.adopet.models.Pet
-import com.fourtk.adopet.services.PetService
 import com.fourtk.adopet.services.TutorService
 import org.springframework.stereotype.Component
 
@@ -17,10 +16,12 @@ class PetRequestMapper(
             status = t.status,
             carrying = t.carrying,
             specie = t.specie,
+            ageMonthOrYear = t.ageMonthOrYear,
             personality = t.personality,
             description = t.description,
             image = t.image,
-            tutor = tutorService.getBYId(t.idOwner)
+            tutor = tutorService.getBYId(t.idOwner),
+            genre = t.genre,
         )
     }
 }
