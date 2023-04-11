@@ -29,7 +29,8 @@ data class Pet (
         var dateCreate: LocalDateTime = LocalDateTime.now(),
 
         @ManyToOne
-        val tutor: Tutor
+        @JoinColumn(name = "tutor")
+        var tutor: Tutor
 )
 
 

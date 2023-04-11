@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Email
 data class Tutor (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
+        var id: Long? = null,
         var name: String,
         @Column(nullable = false, unique = true)
         var email: String,

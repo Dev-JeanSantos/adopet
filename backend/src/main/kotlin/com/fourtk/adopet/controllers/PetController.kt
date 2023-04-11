@@ -42,15 +42,13 @@ class PetController (
     fun getById(@PathVariable id: Long): PetResponseDTO {
         return petService.getById(id)
     }
-
-
-//    @PutMapping("/{id}")
-//    @Transactional
-//    fun updateTutor(@PathVariable id: Long, @RequestBody  @Valid tutorRequestDTO: TutorRequestDTO)
-//            : ResponseEntity<TutorResponseDTO>  {
-//        val tutorResponseDTO = tutorService.update(id, tutorRequestDTO)
-//        return  ResponseEntity.ok().body(tutorResponseDTO)
-//    }
+    @PutMapping("/{id}")
+    @Transactional
+    fun updatePet(@PathVariable id: Long, @RequestBody  @Valid petRequestDTO: PetRequestDTO)
+            : ResponseEntity<PetResponseDTO>  {
+        val petResponseDTO = petService.update(id, petRequestDTO)
+        return  ResponseEntity.ok().body(petResponseDTO)
+    }
 //    @DeleteMapping("/{id}")
 //    @Transactional
 //    @ResponseStatus(HttpStatus.NO_CONTENT)
