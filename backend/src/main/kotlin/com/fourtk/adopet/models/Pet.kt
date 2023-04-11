@@ -6,31 +6,33 @@ import java.time.LocalDateTime
 
 @Entity
 @Table(name = "db_pet")
-data class Pet (
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
-        var name: String,
-        var age: Int,
-        @Enumerated(EnumType.STRING)
-        var ageMonthOrYear: PetAgeMonthOrYear,
-        @Enumerated(EnumType.STRING)
-        var genre: PetGenre,
-        @Enumerated(EnumType.STRING)
-        var status: PetStatus = PetStatus.AVAILABLE,
-        @Enumerated(EnumType.STRING)
-        var carrying: PetCarrying,
-        @Enumerated(EnumType.STRING)
-        var specie: PetSpecie,
-        @Enumerated(EnumType.STRING)
-        var personality: PetPersonality,
-        var description: String,
-        var image: String?,
-        var dateCreate: LocalDateTime = LocalDateTime.now(),
+data class Pet(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
+    var name: String,
+    var age: Int,
+    @Enumerated(EnumType.STRING)
+    var ageMonthOrYear: PetAgeMonthOrYear,
+    @Enumerated(EnumType.STRING)
+    var genre: PetGenre,
+    @Enumerated(EnumType.STRING)
+    var status: PetStatus = PetStatus.AVAILABLE,
+    @Enumerated(EnumType.STRING)
+    var carrying: PetCarrying,
+    @Enumerated(EnumType.STRING)
+    var specie: PetSpecie,
+    @Enumerated(EnumType.STRING)
+    var personality: PetPersonality,
+    var description: String,
+    var image: String?,
+    var dateCreate: LocalDateTime = LocalDateTime.now(),
 
-        @ManyToOne
-        @JoinColumn(name = "tutor")
-        var tutor: Tutor
+    @ManyToOne
+    var tutor: Tutor? = null,
+
+    @ManyToOne
+    var shelter: Shelter? = null,
 )
 
 

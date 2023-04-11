@@ -9,9 +9,9 @@ class PetResponsePaginationMapper : Mapper<Pet, PetResponsePaginationDTO> {
     override fun map(t: Pet): PetResponsePaginationDTO {
         return PetResponsePaginationDTO(
             name= t.name,
-            nameOwner = t.tutor.name,
-            city = t.tutor.city,
-            uf = t.tutor.uf,
+            nameOwner = t.tutor!!.name,
+            city = t.tutor!!.city,
+            uf = t.tutor!!.uf,
             status = t.status.name,
             specie = t.specie.name,
             image = t.image,

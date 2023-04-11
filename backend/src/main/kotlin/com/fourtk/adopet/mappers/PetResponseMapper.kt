@@ -9,10 +9,10 @@ class PetResponseMapper: Mapper<Pet, PetResponseDTO> {
     override fun map(t: Pet): PetResponseDTO {
         return PetResponseDTO(
             name= t.name,
-            idOwner = t.tutor.id,
-            nameOwner = t.tutor.name,
-            city = t.tutor.city,
-            uf = t.tutor.uf,
+            idOwner = t.tutor?.id,
+            nameOwner = t.tutor!!.name,
+            city = t.tutor!!.city,
+            uf = t.tutor!!.uf,
             age = t.age,
             status = t.status.name,
             carrying = t.carrying.name,
