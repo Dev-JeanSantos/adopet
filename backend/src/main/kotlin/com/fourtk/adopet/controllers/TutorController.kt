@@ -1,9 +1,8 @@
 package com.fourtk.adopet.controllers
 
-import com.fourtk.adopet.TutorResponsesDTO.TutorResponseDTO
-import com.fourtk.adopet.TutorRequestsDTO.TutorRequestDTO
-import com.fourtk.adopet.TutorRequestsDTO.TutorRequestUpdateDTO
-import com.fourtk.adopet.TutorResponsesDTO.TutorResponsePaginationDTO
+import com.fourtk.adopet.dtos.TutorResponsesDTO.TutorResponseDTO
+import com.fourtk.adopet.dtos.TutorRequestsDTO.TutorRequestDTO
+import com.fourtk.adopet.dtos.TutorResponsesDTO.TutorResponsePaginationDTO
 import com.fourtk.adopet.services.TutorService
 import jakarta.validation.Valid
 import org.springframework.data.domain.Page
@@ -23,8 +22,8 @@ class TutorController (
 ){
     @PostMapping
     fun insertTutor(
-            @RequestBody @Valid tutorRequestDTO: TutorRequestDTO,
-            uriBuilder: UriComponentsBuilder
+        @RequestBody @Valid tutorRequestDTO: TutorRequestDTO,
+        uriBuilder: UriComponentsBuilder
     ): ResponseEntity<TutorResponseDTO> {
         val tutorResponseDTO = tutorService.insertTutor(tutorRequestDTO)
         val uri = uriBuilder.path("/tutor/").build().toUri()

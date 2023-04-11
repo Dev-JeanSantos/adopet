@@ -1,6 +1,6 @@
 package com.fourtk.adopet.mappers
 
-import com.fourtk.adopet.TutorResponsesDTO.TutorResponseDTO
+import com.fourtk.adopet.dtos.TutorResponsesDTO.TutorResponseDTO
 import com.fourtk.adopet.models.Tutor
 import org.springframework.stereotype.Component
 

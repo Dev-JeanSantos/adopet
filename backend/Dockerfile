@@ -1,7 +1,7 @@
 FROM openjdk:17-oracle
 EXPOSE 8080
 ADD /target/adopet-0.0.1-SNAPSHOT.jar adopet.jar
-CMD ["java","-jar","adopet.jar"]
+ENTRYPOINT ["java","-jar","adopet.jar"]
 #
 #FROM adoptopenjdk/openjdk11
 #EXPOSE 8080

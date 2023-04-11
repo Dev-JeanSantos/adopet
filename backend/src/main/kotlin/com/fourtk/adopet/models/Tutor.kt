@@ -19,7 +19,7 @@ data class Tutor (
         var city: String,
         var uf: String,
         var phone: String,
-        var image: String?,
+        var image: String?
 )
 
 
