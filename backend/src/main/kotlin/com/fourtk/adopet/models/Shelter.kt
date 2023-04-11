@@ -9,6 +9,7 @@ data class Shelter (
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long? = null,
         var name: String,
+        var cnpj: String,
         var phone: String,
         @Column(nullable = false, unique = true)
         var email: String,
