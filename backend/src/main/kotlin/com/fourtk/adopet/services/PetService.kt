@@ -3,6 +3,7 @@ package com.fourtk.adopet.services
 import com.fourtk.adopet.dtos.PetRequestsDTO.PetRequestDTO
 import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponseDTO
 import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponsePaginationDTO
+import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.*
 import com.fourtk.adopet.repositories.PetRepository
 import org.springframework.data.domain.Page
@@ -43,11 +44,15 @@ class PetService(
 
     }
 
+    fun getById(id: Long): PetResponseDTO {
+        val possiblePet = petRepository.findById(id).
+                orElseThrow{ NotFoundException(notFoundException) }
+        return petResponseMapper.map(possiblePet)
+    }
+
 
 //    fun getById(id: Long): TutorResponsePaginationDTO {
-//        val possibleTutor = tutorRepository.findById(id).
-//                orElseThrow{ NotFoundException(notFoundException) }
-//        return tutorResponsePaginationMapper.map(possibleTutor)
+//
 //
 //    }
 //

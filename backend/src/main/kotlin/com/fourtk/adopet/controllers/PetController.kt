@@ -38,10 +38,12 @@ class PetController (
         return petService.listar(petName,petCity, pagination)
     }
 
-//    @GetMapping("/{id}")
-//    fun getById(@PathVariable id: Long): TutorResponsePaginationDTO {
-//        return tutorService.getById(id)
-//    }
+    @GetMapping("/{id}")
+    fun getById(@PathVariable id: Long): PetResponseDTO {
+        return petService.getById(id)
+    }
+
+
 //    @PutMapping("/{id}")
 //    @Transactional
 //    fun updateTutor(@PathVariable id: Long, @RequestBody  @Valid tutorRequestDTO: TutorRequestDTO)
