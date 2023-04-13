@@ -1,12 +1,15 @@
 package com.fourtk.adopet.controllers
 
 import com.fourtk.adopet.dtos.PetRequestsDTO.ShelterRequestDTO
-import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponseDTO
 import com.fourtk.adopet.dtos.ShelterResponseDTO.ShelterResponseDTO
-import com.fourtk.adopet.services.PetService
 import com.fourtk.adopet.services.ShelterService
 import jakarta.validation.Valid
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
@@ -25,14 +28,14 @@ class ShelterController (
         return ResponseEntity.created(uri).body(shelterResponseDTO)
     }
 
-//    @GetMapping
-//    @Transactional
-//    fun listPets(
-//        @RequestParam(required = false) petName: String?, @RequestParam(required = false) petCity: String?,
-//        @PageableDefault(size = 5, sort = ["name"], direction = Sort.Direction.DESC) pagination: Pageable
-//    ): Page<PetResponsePaginationDTO> {
-//        return petService.listar(petName,petCity, pagination)
-//    }
+    @GetMapping
+    @Transactional
+    fun listPets(
+        @RequestParam(required = false) shelterName: String?, @RequestParam(required = false) shelterCity: String?,
+        @PageableDefault(size = 5, sort = ["name"], direction = Sort.Direction.DESC) pagination: Pageable
+    ): Page<ShelterResponseDTO> {
+        return shelterService.listar(shelterCity,shelterName, pagination)
+    }
 //
 //    @GetMapping("/{id}")
 //    fun getById(@PathVariable id: Long): PetResponseDTO {
