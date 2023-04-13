@@ -20,8 +20,8 @@ data class Tutor (
         var phone: String,
         var image: String?,
 
-        @OneToMany(mappedBy = "responsible")
-        val helters: List<Shelter> = ArrayList(),
+        @OneToMany(mappedBy = "responsible", cascade = [CascadeType.ALL], orphanRemoval = true)
+        val helters: List<Shelter>? = ArrayList(),
 )
 
 

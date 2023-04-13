@@ -21,7 +21,7 @@ data class Shelter (
         @ManyToOne
         var responsible: Tutor? = null,
 
-        @OneToMany(mappedBy = "shelter")
+        @OneToMany(mappedBy = "shelter", cascade = [CascadeType.ALL], orphanRemoval = true)
         val pets: List<Pet> = ArrayList(),
 
 )
