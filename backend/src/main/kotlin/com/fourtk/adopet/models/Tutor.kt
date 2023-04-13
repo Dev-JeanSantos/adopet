@@ -3,7 +3,7 @@ package com.fourtk.adopet.models
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "db_tutor")
+@Table(name = "tb_tutor")
 data class Tutor (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +19,6 @@ data class Tutor (
         var uf: String,
         var phone: String,
         var image: String?,
-
-        @OneToMany(mappedBy = "tutor")
-        val pets: List<Pet> = ArrayList(),
 
         @OneToMany(mappedBy = "responsible")
         val helters: List<Shelter> = ArrayList(),

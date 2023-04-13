@@ -5,7 +5,7 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "db_pet")
+@Table(name = "tb_pet")
 data class Pet(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +27,6 @@ data class Pet(
     var description: String,
     var image: String?,
     var dateCreate: LocalDateTime = LocalDateTime.now(),
-
-    @ManyToOne
-    var tutor: Tutor? = null,
 
     @ManyToOne
     var shelter: Shelter? = null,

@@ -2,12 +2,14 @@ package com.fourtk.adopet.mappers
 
 import com.fourtk.adopet.dtos.PetRequestsDTO.PetRequestDTO
 import com.fourtk.adopet.models.Pet
+import com.fourtk.adopet.services.ShelterService
 import com.fourtk.adopet.services.TutorService
 import org.springframework.stereotype.Component
 
 @Component
 class PetRequestMapper(
-    private val tutorService: TutorService
+    private val tutorService: TutorService,
+    private val shelterService: ShelterService
 ) : Mapper<PetRequestDTO, Pet> {
     override fun map(t: PetRequestDTO): Pet {
         return Pet(
@@ -20,7 +22,7 @@ class PetRequestMapper(
             personality = t.personality,
             description = t.description,
             image = t.image,
-            tutor = tutorService.getBYId(t.idOwner),
+            shelter = shelterService.getBYId(t.idShelter!!),
             genre = t.genre,
         )
     }

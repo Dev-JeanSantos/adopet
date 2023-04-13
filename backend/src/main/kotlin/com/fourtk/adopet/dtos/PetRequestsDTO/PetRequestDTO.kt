@@ -8,10 +8,9 @@ import jakarta.validation.constraints.Size
 
 data class PetRequestDTO (
         @field:NotEmpty
-        @field:Size(min = 5, max = 50)
+        @field:Size(min = 3, max = 50)
         val name: String,
-        @field:NotNull
-        val idOwner: Long,
+        val idShelter: Long?,
         @field:NotNull
         @field:Positive
         val age: Int,

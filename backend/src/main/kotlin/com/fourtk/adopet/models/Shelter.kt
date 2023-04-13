@@ -3,7 +3,7 @@ package com.fourtk.adopet.models
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "db_shelter")
+@Table(name = "tb_shelter")
 data class Shelter (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

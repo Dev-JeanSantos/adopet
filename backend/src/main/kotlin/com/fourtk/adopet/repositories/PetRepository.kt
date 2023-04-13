@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface PetRepository: JpaRepository<Pet, Long> {
     fun findByName(petName: String, pagination: Pageable): Page<Pet>
-    fun findByTutorCity(petCity: String?, pagination: Pageable): Page<Pet>
+    fun findByShelterCity(petCity: String?, pagination: Pageable): Page<Pet>
 
 }

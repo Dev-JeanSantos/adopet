@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service
 class PetService(
     private val petRequestMapper: PetRequestMapper,
     private val tutorService: TutorService,
+    private val shelterService: ShelterService,
     private val petResponseMapper: PetResponseMapper,
     private val petResponsePaginationMapper: PetResponsePaginationMapper,
     private val petRepository: PetRepository,
@@ -37,7 +38,7 @@ class PetService(
             petRepository.findByName(petName, pagination)
         } else {
             (petCity != null)
-            petRepository.findByTutorCity(petCity, pagination)
+            petRepository.findByShelterCity(petCity, pagination)
 
         }
         return pets.map { t ->
@@ -56,7 +57,7 @@ class PetService(
         val pet = petRepository.findById(id).orElseThrow() {
             NotFoundException(notFoundException)
         }
-        pet.tutor = tutorService.getBYId(petRequestDTO.idOwner)
+        pet.shelter = shelterService.getBYId(petRequestDTO.idShelter!!)
         pet.name = petRequestDTO.name
         pet.age = petRequestDTO.age
         pet.ageMonthOrYear = petRequestDTO.ageMonthOrYear
