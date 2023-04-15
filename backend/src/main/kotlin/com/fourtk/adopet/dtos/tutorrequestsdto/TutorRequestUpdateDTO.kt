@@ -1,4 +1,4 @@
-package com.fourtk.adopet.dtos.TutorRequestsDTO
+package com.fourtk.adopet.dtos.tutorrequestsdto
 
 data class TutorRequestUpdateDTO (
         val id: Long,

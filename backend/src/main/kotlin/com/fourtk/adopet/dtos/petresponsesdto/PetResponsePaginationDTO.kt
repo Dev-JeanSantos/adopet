@@ -1,4 +1,4 @@
-package com.fourtk.adopet.dtos.PetResponsesDTO
+package com.fourtk.adopet.dtos.petresponsesdto
 
 data class PetResponsePaginationDTO (
         val name: String,

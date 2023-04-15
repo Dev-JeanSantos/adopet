@@ -1,8 +1,8 @@
 package com.fourtk.adopet.controllers
 
-import com.fourtk.adopet.dtos.PetRequestsDTO.ShelterRequestDTO
-import com.fourtk.adopet.dtos.ShelterResponseDTO.ResponsibleShelterResponseDTO
-import com.fourtk.adopet.dtos.ShelterResponseDTO.ShelterResponseDTO
+import com.fourtk.adopet.dtos.petpequestsdto.ShelterRequestDTO
+import com.fourtk.adopet.dtos.shelterresponsedto.ResponsibleShelterResponseDTO
+import com.fourtk.adopet.dtos.shelterresponsedto.ShelterResponseDTO
 import com.fourtk.adopet.services.ShelterService
 import jakarta.validation.Valid
 import org.slf4j.LoggerFactory

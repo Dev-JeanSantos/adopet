@@ -1,6 +1,6 @@
-package com.fourtk.adopet.dtos.ShelterResponseDTO
+package com.fourtk.adopet.dtos.shelterresponsedto
 
-data class ShelterResponseDetailsDTO (
+data class ShelterResponseDTO (
         val name: String,
         val cnpj: String,
         val phone: String,

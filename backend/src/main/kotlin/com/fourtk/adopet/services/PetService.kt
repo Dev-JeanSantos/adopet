@@ -1,8 +1,8 @@
 package com.fourtk.adopet.services
 
-import com.fourtk.adopet.dtos.PetRequestsDTO.PetRequestDTO
-import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponseDTO
-import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponsePaginationDTO
+import com.fourtk.adopet.dtos.petpequestsdto.PetRequestDTO
+import com.fourtk.adopet.dtos.petresponsesdto.PetResponseDTO
+import com.fourtk.adopet.dtos.petresponsesdto.PetResponsePaginationDTO
 import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.PetRequestMapper
 import com.fourtk.adopet.mappers.PetResponseMapper

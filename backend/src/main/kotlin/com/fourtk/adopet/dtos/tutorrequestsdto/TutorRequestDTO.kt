@@ -1,4 +1,4 @@
-package com.fourtk.adopet.dtos.TutorRequestsDTO
+package com.fourtk.adopet.dtos.tutorrequestsdto
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotEmpty

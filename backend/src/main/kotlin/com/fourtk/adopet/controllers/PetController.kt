@@ -1,8 +1,8 @@
 package com.fourtk.adopet.controllers
 
-import com.fourtk.adopet.dtos.PetRequestsDTO.PetRequestDTO
-import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponseDTO
-import com.fourtk.adopet.dtos.PetResponsesDTO.PetResponsePaginationDTO
+import com.fourtk.adopet.dtos.petpequestsdto.PetRequestDTO
+import com.fourtk.adopet.dtos.petresponsesdto.PetResponseDTO
+import com.fourtk.adopet.dtos.petresponsesdto.PetResponsePaginationDTO
 import com.fourtk.adopet.services.PetService
 import jakarta.validation.Valid
 import org.springframework.data.domain.Page

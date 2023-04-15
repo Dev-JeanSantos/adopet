@@ -1,8 +1,8 @@
 package com.fourtk.adopet.controllers
 
-import com.fourtk.adopet.dtos.TutorResponsesDTO.TutorResponseDTO
-import com.fourtk.adopet.dtos.TutorRequestsDTO.TutorRequestDTO
-import com.fourtk.adopet.dtos.TutorResponsesDTO.TutorResponsePaginationDTO
+import com.fourtk.adopet.dtos.tutorresponsesdto.TutorResponseDTO
+import com.fourtk.adopet.dtos.tutorrequestsdto.TutorRequestDTO
+import com.fourtk.adopet.dtos.tutorresponsesdto.TutorResponsePaginationDTO
 import com.fourtk.adopet.services.TutorService
 import jakarta.validation.Valid
 import org.springframework.data.domain.Page
