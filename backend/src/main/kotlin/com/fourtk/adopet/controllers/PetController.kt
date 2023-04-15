@@ -41,7 +41,7 @@ class PetController (
     @Transactional
     fun listPets(
         @RequestParam(required = false) petName: String?, @RequestParam(required = false) petCity: String?,
-        @PageableDefault(size = 5, sort = ["name"], direction = Sort.Direction.DESC) pagination: Pageable
+        @PageableDefault(size = 9, sort = ["name"], direction = Sort.Direction.DESC) pagination: Pageable
     ): Page<PetResponsePaginationDTO> {
         logger.info("Start listPets - Controller")
         logger.info("End listPets - Controller")
