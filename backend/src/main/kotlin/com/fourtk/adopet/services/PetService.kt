@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service
 @Service
 class PetService(
     private val petRequestMapper: PetRequestMapper,
-    private val tutorService: TutorService,
     private val shelterService: ShelterService,
     private val petResponseMapper: PetResponseMapper,
     private val petResponsePaginationMapper: PetResponsePaginationMapper,
