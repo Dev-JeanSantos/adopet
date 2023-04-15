@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.PageableDefault
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
@@ -41,6 +42,7 @@ class ShelterController (
         @PageableDefault(size = 5, sort = ["name"], direction = Sort.Direction.DESC) pagination: Pageable
     ): Page<ShelterResponseDTO> {
         return shelterService.listar(shelterCity,shelterName, pagination)
+//    TODO: Implementar list de abrigos comtodos os pets inclusos (aninhado)
     }
 
     @GetMapping("relatorio")
@@ -64,14 +66,15 @@ class ShelterController (
         val shelterResponseDTO = shelterService.update(idShelter, shelterRequestDTO)
         logger.info("End updatePet - Controller")
         return  ResponseEntity.ok().body(shelterResponseDTO)
+//    TODO: resolver NullPoint associado aos pets
     }
 
-
-
-//    @DeleteMapping("/{id}")
-//    @Transactional
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    fun deletePet(@PathVariable id: Long) {
-//        petService.delete(id)
-//    }
+    @DeleteMapping("/{idShelter}")
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteShelter(@PathVariable idShelter: Long) {
+        logger.info("Start deleteShelter IdShelter:${idShelter} - Controller")
+        shelterService.delete(idShelter)
+        logger.info("End deleteShelter - Controller")
+    }
 }

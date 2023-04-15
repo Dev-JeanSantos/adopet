@@ -89,4 +89,10 @@ class ShelterService(
         return shelterResponseMapper.map(shelter)
     }
 
+    fun delete(idShelter: Long) {
+        logger.info("Start deleteShelter IdShelter:${idShelter} - Service")
+        val shelter = shelterRepository.deleteById(idShelter)
+        logger.info("End deleteShelter success- Service")
+    }
+
 }
