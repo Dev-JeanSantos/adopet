@@ -5,7 +5,7 @@
 
 
 
-O Adopet é uma aplicação full stack construída como projeto de estudo com a finalidade de aplicar os conceitos práticos e téoricos dos contéudos praticados no Challenger Backend organizado pela [Alura](https://www.alura.com.br/ "Site da Alura").
+O Adopet é uma aplicação full stack construída como projeto de estudo com a finalidade de aplicar os conceitos práticos e téoricos dos contéudos no Challenger Backend organizado pela [Alura](https://www.alura.com.br/ "Site da Alura").
 
 A aplicação consiste no cadastro e gerenciamento de pets, abrigos e tutores (usuarios) disponibilizando a funcionalidade de adoção desses pets por possíveis tutores.
 
