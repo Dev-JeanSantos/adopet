@@ -23,12 +23,14 @@ class ShelterController (
 
     private val logger = LoggerFactory.getLogger(this::class.java)
     @PostMapping
-    fun insertPet(
+    fun insertShelter(
         @RequestBody @Valid shelterRequestDTO: ShelterRequestDTO,
         uriBuilder: UriComponentsBuilder
     ): ResponseEntity<ShelterResponseDTO> {
+        logger.info("Start insertShelter - Controller")
         val shelterResponseDTO = shelterService.insertShelter(shelterRequestDTO)
         val uri = uriBuilder.path("/pet/").build().toUri()
+        logger.info("End insertShelter - Controller")
         return ResponseEntity.created(uri).body(shelterResponseDTO)
     }
 
@@ -54,13 +56,15 @@ class ShelterController (
     }
 
 
-//    @PutMapping("/{id}")
-//    @Transactional
-//    fun updatePet(@PathVariable id: Long, @RequestBody  @Valid petRequestDTO: PetRequestDTO)
-//            : ResponseEntity<PetResponseDTO>  {
-//        val petResponseDTO = petService.update(id, petRequestDTO)
-//        return  ResponseEntity.ok().body(petResponseDTO)
-//    }
+    @PutMapping("/{idShelter}")
+    @Transactional
+    fun updateShelter(@PathVariable idShelter: Long, @RequestBody  @Valid shelterRequestDTO: ShelterRequestDTO )
+            : ResponseEntity<ShelterResponseDTO>  {
+        logger.info("Start updatePet IdShelter:${idShelter} and new shelter:${shelterRequestDTO} - Controller")
+        val shelterResponseDTO = shelterService.update(idShelter, shelterRequestDTO)
+        logger.info("End updatePet - Controller")
+        return  ResponseEntity.ok().body(shelterResponseDTO)
+    }
 
 
 
