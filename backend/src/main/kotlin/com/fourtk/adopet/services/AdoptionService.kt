@@ -39,11 +39,15 @@ class AdoptionService(
     }
 
     fun getById(id: Long): AdoptionResponseDTO {
-        logger.info("Start getById - Service")
-        logger.info("validating if the adoption exists com idAdoption:${id} - Service")
-        val possiblePet = adoptionRepository.findById(id).orElseThrow { NotFoundException(notFoundException) }
-        logger.info("End getById - Service")
-        return adoptionResponseMapper.map(possiblePet)
+        try {
+            logger.info("Start getById - Service")
+            logger.info("validating if the adoption exists com idAdoption:${id} - Service")
+            val possiblePet = adoptionRepository.findById(id).orElseThrow { NotFoundException(notFoundException) }
+            logger.info("End getById - Service")
+            return adoptionResponseMapper.map(possiblePet)
+        }catch (e:Exception){
+            throw e
+        }
     }
     fun delete(id: Long) {
         logger.info("Start delete - Service")
