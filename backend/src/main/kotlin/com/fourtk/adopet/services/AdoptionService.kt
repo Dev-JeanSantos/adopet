@@ -51,8 +51,8 @@ class AdoptionService(
     }
     fun delete(id: Long) {
         logger.info("Start delete - Service")
-        val adoption = adoptionRepository.deleteById(id)
         logger.info("End delete - Service")
+        return adoptionRepository.deleteById(id)
     }
 
 }

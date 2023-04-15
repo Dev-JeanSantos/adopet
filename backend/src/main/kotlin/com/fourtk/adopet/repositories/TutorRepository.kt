@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface TutorRepository : JpaRepository<Tutor, Long> {
     fun findByName(nameTutor: String, pagination: Pageable): Page<Tutor>
+    fun findByEmail(username: String?): Tutor?
 
 }

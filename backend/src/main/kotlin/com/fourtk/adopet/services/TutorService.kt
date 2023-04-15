@@ -11,6 +11,7 @@ import com.fourtk.adopet.models.Tutor
 import com.fourtk.adopet.repositories.TutorRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Service
 
 @Service
@@ -74,5 +75,10 @@ class TutorService(
 
     fun getBYId(idOwner: Long): Tutor {
         return tutorRepository.getOne(idOwner)
+    }
+
+    fun loadUserByUsername(username: String?): UserDetails {
+        val user = tutorRepository.findByEmail(username) ?: throw RuntimeException()
+        return UserDetail(user)
     }
 }

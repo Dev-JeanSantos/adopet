@@ -1,5 +1,6 @@
 package com.fourtk.adopet.models
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 @Entity
@@ -22,6 +23,11 @@ data class Tutor (
 
         @OneToMany(mappedBy = "responsible", cascade = [CascadeType.ALL], orphanRemoval = true)
         val helters: List<Shelter>? = ArrayList(),
+
+        @JsonIgnore
+        @ManyToMany(fetch = FetchType.EAGER)
+        @JoinColumn(name = "user_role")
+        val role: List<Role> =  mutableListOf()
 )
 
 
