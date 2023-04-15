@@ -22,7 +22,7 @@ A aplicação consiste no cadastro e gerenciamento de pets, abrigos e tutores (u
 
 
 ## Modelo conceitual
->![Modelo Conceitual](https://github.com/Dev-JeanSantos/assets/blob/main/dscatalog/modelo-conceitual.png)
+Em construção
 
 # Tecnologias utilizadas
 ## Back end
