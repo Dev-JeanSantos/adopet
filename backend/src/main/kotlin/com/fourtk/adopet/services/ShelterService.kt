@@ -1,8 +1,8 @@
 package com.fourtk.adopet.services
 
-import com.fourtk.adopet.dtos.petpequestsdto.ShelterRequestDTO
-import com.fourtk.adopet.dtos.shelterresponsedto.ResponsibleShelterResponseDTO
-import com.fourtk.adopet.dtos.shelterresponsedto.ShelterResponseDTO
+import com.fourtk.adopet.dtos.petrequest.ShelterRequestDTO
+import com.fourtk.adopet.dtos.shelterresponse.ResponsibleShelterResponseDTO
+import com.fourtk.adopet.dtos.shelterresponse.ShelterResponseDTO
 import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.ShelterRequestMapper
 import com.fourtk.adopet.mappers.ShelterResponseMapper

@@ -1,6 +1,6 @@
 package com.fourtk.adopet.mappers
 
-import com.fourtk.adopet.dtos.petpequestsdto.ShelterRequestDTO
+import com.fourtk.adopet.dtos.petrequest.ShelterRequestDTO
 import com.fourtk.adopet.models.Shelter
 import com.fourtk.adopet.services.TutorService
 import org.springframework.stereotype.Component

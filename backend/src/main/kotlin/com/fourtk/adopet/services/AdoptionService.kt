@@ -1,29 +1,36 @@
 package com.fourtk.adopet.services
 
-import com.fourtk.adopet.dtos.petpequestsdto.PetRequestDTO
-import com.fourtk.adopet.dtos.petresponsesdto.PetResponseDTO
-import com.fourtk.adopet.mappers.PetRequestMapper
-import com.fourtk.adopet.mappers.PetResponseMapper
-import com.fourtk.adopet.mappers.PetResponsePaginationMapper
+import com.fourtk.adopet.dtos.adoptionrequest.AdoptionRequestDTO
+import com.fourtk.adopet.dtos.adoptionresponse.AdoptionResponseDTO
+import com.fourtk.adopet.dtos.petrequest.PetRequestDTO
+import com.fourtk.adopet.dtos.petresponse.PetResponseDTO
+import com.fourtk.adopet.mappers.*
+import com.fourtk.adopet.models.Adoption
+import com.fourtk.adopet.repositories.AdoptionRepository
 import com.fourtk.adopet.repositories.PetRepository
+import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
 class AdoptionService(
-    private val petRequestMapper: PetRequestMapper,
+    private val adoptionRequestMapper: AdoptionRequestMapper,
+    private val adoptionResponseMapper: AdoptionResponseMapper,
+    private val adoptionRepository: AdoptionRepository,
+
     private val tutorService: TutorService,
-    private val shelterService: ShelterService,
-    private val petResponseMapper: PetResponseMapper,
-    private val petResponsePaginationMapper: PetResponsePaginationMapper,
-    private val petRepository: PetRepository,
 
     val notFoundException: String = "Pet not found!"
 ) {
-    fun insertPet(petRequestDTO: PetRequestDTO): PetResponseDTO {
-        val pet = petRequestMapper.map(petRequestDTO)
-        petRepository.save(pet)
-        return petResponseMapper.map(pet)
+
+    private val logger = LoggerFactory.getLogger(this::class.java)
+    fun insertAdoption(adoptionRequestDTO: AdoptionRequestDTO): AdoptionResponseDTO? {
+        logger.info("Start insertAdoption, new adoption:${adoptionRequestDTO}- Service")
+        val adoption = adoptionRequestMapper.map(adoptionRequestDTO)
+            adoptionRepository.save(adoption)
+        logger.info("End insertAdoption of Success - Service")
+            return adoptionResponseMapper.map(adoption)
     }
+
 
 //    fun listar(petName: String?, petCity: String?, pagination: Pageable): Page<PetResponsePaginationDTO> {
 //

@@ -1,4 +1,4 @@
-package com.fourtk.adopet.dtos.petresponsesdto
+package com.fourtk.adopet.dtos.petresponse
 
 data class PetResponseDTO (
         val name: String,

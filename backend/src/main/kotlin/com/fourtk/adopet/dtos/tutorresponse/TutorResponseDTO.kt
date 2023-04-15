@@ -1,4 +1,4 @@
-package com.fourtk.adopet.dtos.tutorresponsesdto
+package com.fourtk.adopet.dtos.tutorresponse
 
 data class TutorResponseDTO (
         val name: String,

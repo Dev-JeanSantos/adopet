@@ -1,8 +1,8 @@
 package com.fourtk.adopet.services
 
-import com.fourtk.adopet.dtos.tutorrequestsdto.TutorRequestDTO
-import com.fourtk.adopet.dtos.tutorresponsesdto.TutorResponseDTO
-import com.fourtk.adopet.dtos.tutorresponsesdto.TutorResponsePaginationDTO
+import com.fourtk.adopet.dtos.tutorrequest.TutorRequestDTO
+import com.fourtk.adopet.dtos.tutorresponse.TutorResponseDTO
+import com.fourtk.adopet.dtos.tutorresponse.TutorResponsePaginationDTO
 import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.TutorRequestMapper
 import com.fourtk.adopet.mappers.TutorResponseMapper

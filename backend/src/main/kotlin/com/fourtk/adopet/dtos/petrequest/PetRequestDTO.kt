@@ -1,4 +1,4 @@
-package com.fourtk.adopet.dtos.petpequestsdto
+package com.fourtk.adopet.dtos.petrequest
 
 import com.fourtk.adopet.enums.*
 import jakarta.validation.constraints.NotEmpty

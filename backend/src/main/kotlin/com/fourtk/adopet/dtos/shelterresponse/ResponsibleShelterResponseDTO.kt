@@ -1,4 +1,4 @@
-package com.fourtk.adopet.dtos.shelterresponsedto
+package com.fourtk.adopet.dtos.shelterresponse
 
 data class ResponsibleShelterResponseDTO(
     val nameResponsible: String,

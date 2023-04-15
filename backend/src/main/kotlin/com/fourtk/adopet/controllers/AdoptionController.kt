@@ -1,27 +1,36 @@
-package com.fourtk.adoadoption.controllers
+package com.fourtk.adopet.controllers
 
+import com.fourtk.adopet.dtos.adoptionrequest.AdoptionRequestDTO
+import com.fourtk.adopet.dtos.adoptionresponse.AdoptionResponseDTO
 import com.fourtk.adopet.services.AdoptionService
+import jakarta.validation.Valid
+import org.slf4j.LoggerFactory
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
 @RequestMapping("/adoptions")
 class AdoptionController (
         private val adoptionService: AdoptionService
 ){
-//
-//    private val logger = LoggerFactory.getLogger(this::class.java)
-//
-//    @PostMapping
-//    fun insertAdoption(
-//        @RequestBody @Valid adoptionRequestDTO: AdoptionRequestDTO,
-//        uriBuilder: UriComponentsBuilder
-//    ): ResponseEntity<AdoptionResponseDTO> {
-//        logger.info("Start insertAdoption - Controller")
-//        val adoptionResponseDTO = adoptionService.insertAdoption(adoptionRequestDTO)
-//        val uri = uriBuilder.path("/adoption/").build().toUri()
-//        logger.info("End insertAdoption - Controller")
-//        return ResponseEntity.created(uri).body(adoptionResponseDTO)
-//    }
+
+    private val logger = LoggerFactory.getLogger(this::class.java)
+
+    @PostMapping
+    fun insertAdoption(
+            @RequestBody @Valid adoptionRequestDTO: AdoptionRequestDTO,
+            uriBuilder: UriComponentsBuilder
+    ): ResponseEntity<AdoptionResponseDTO> {
+        logger.info("Start insertAdoption - Controller")
+        val adoptionResponseDTO = adoptionService.insertAdoption(adoptionRequestDTO)
+        val uri = uriBuilder.path("/adoption/").build().toUri()
+        logger.info("End insertAdoption - Controller")
+        return ResponseEntity.created(uri).body(adoptionResponseDTO)
+//      TODO: Implementar a mudança de status do pet no momento da adoção
+    }
+
+
 //
 //    @GetMapping
 //    @Transactional

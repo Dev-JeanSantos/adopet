@@ -14,6 +14,5 @@ class Adoption(
     @OneToOne
     val tutor: Tutor,
     @OneToOne
-    val pet: Pet,
-
-    )
+    val pet: Pet
+)

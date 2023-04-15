@@ -1,6 +1,6 @@
 package com.fourtk.adopet.mappers
 
-import com.fourtk.adopet.dtos.petpequestsdto.PetRequestDTO
+import com.fourtk.adopet.dtos.petrequest.PetRequestDTO
 import com.fourtk.adopet.models.Pet
 import com.fourtk.adopet.services.ShelterService
 import com.fourtk.adopet.services.TutorService
