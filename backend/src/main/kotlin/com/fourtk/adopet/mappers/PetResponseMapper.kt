@@ -25,6 +25,4 @@ class PetResponseMapper: Mapper<Pet, PetResponseDTO> {
             nameShelter = t.shelter!!.name
         )
     }
-
-
 }
