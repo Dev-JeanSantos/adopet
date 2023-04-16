@@ -1,6 +1,6 @@
 package com.fourtk.adopet.models
 
-import jakarta.persistence.*
+import javax.persistence.*
 
 @Entity
 @Table(name = "tb_shelter")

@@ -3,7 +3,9 @@ package com.fourtk.adopet.services
 import com.fourtk.adopet.models.Tutor
 import org.springframework.security.core.userdetails.UserDetails
 
-class UserDetail(private val user: Tutor) : UserDetails {
+
+class UserDetail
+    (private val user: Tutor) : UserDetails {
     override fun getAuthorities() = user.role
 
     override fun getPassword() = user.password

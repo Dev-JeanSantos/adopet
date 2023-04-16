@@ -1,7 +1,7 @@
 package com.fourtk.adopet.models
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import jakarta.persistence.*
+import javax.persistence.*
 
 @Entity
 @Table(name = "tb_tutor")
@@ -26,7 +26,7 @@ data class Tutor (
 
         @JsonIgnore
         @ManyToMany(fetch = FetchType.EAGER)
-        @JoinColumn(name = "user_role")
+        @JoinColumn(name = "tb_tutor_role")
         val role: List<Role> =  mutableListOf()
 )
 

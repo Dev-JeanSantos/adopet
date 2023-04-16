@@ -1,4 +1,5 @@
-INSERT INTO tb_tutor( name, email, password, cpf, address,city,uf,phone,image)VALUES ('Paulo Pedro', 'paulinho@gmail.com','98ff989','000000000-00','Rua Sete de Maio, S/N Vila Madalena','Sorocoba','SP','12-699667738','www.imagem-1.com.br')
+INSERT INTO tb_tutor( name, email, password, cpf, address,city,uf,phone,image)VALUES ('Jean Santos', 'jeancbsan@email.com','$2a$12$d8ppSn9Hn9YBGXDNVNJQhOTuTpbEgNdR5H4Kk4D2RCngUNFg6bsQq','000000000-01','Rua Sete de Maio, S/N Vila Madalena','Sorocoba','SP','12-699667738','www.imagem-1.com.br')
+INSERT INTO tb_tutor( name, email, password, cpf, address,city,uf,phone,image)VALUES ('Paulo Pedro', 'paulinho@gmail.com','$2a$12$d8ppSn9Hn9YBGXDNVNJQhOTuTpbEgNdR5H4Kk4D2RCngUNFg6bsQq','000000000-00','Rua Sete de Maio, S/N Vila Madalena','Sorocoba','SP','12-699667738','www.imagem-1.com.br')
 INSERT INTO tb_tutor( name, email, password, cpf, address,city,uf,phone,image)VALUES ('Marta França', 'martinha@gmail.com','losoos22','111111111-11','Rua F, 200 Centro','Abatuba','SP','13-699667738','www.imagem-2.com.br')
 INSERT INTO tb_tutor( name, email, password, cpf, address,city,uf,phone,image)VALUES ('Deise Alcantara', 'deisinha@gmail.com','22d993%%','222222222-22','Rua Flamengo, 89200 Gavea','Rio de Janeiro','RJ','21-699667738','www.imagem-3.com.br')
 INSERT INTO tb_tutor( name, email, password, cpf, address,city,uf,phone,image)VALUES ('Felipe José', 'felipinho@gmail.com','00od99','333333333-33','Rua Mario Quintana, 899 Centro','Friburgo','RJ','22-699667738','www.imagem-4com.br')
@@ -19,3 +20,6 @@ INSERT INTO tb_pet( name,  shelter_id, age, age_month_or_year,status,carrying,sp
 INSERT INTO tb_pet( name,  shelter_id, age, age_month_or_year,status,carrying,specie,personality,description,image,genre, date_create)VALUES ('Mauricio',1,5,'YEAR', 'AVAILABLE','MEDIUM','CAT','AGGRESSIVE','late muito e estranha as crianças','www.imagemcachorro-8-com.br','MALE', TIMESTAMP WITH TIME ZONE '2023-04-12T21:00:00Z')
 INSERT INTO tb_pet( name,  shelter_id, age, age_month_or_year,status,carrying,specie,personality,description,image,genre, date_create)VALUES ('Chokito',4,8,'YEAR', 'AVAILABLE','MEDIUM','CAT','ASSERTIVE','late muito e estranha as crianças','www.imagemcachorro-9-com.br','MALE', TIMESTAMP WITH TIME ZONE '2023-04-12T21:00:00Z')
 INSERT INTO tb_pet( name,  shelter_id, age, age_month_or_year,status,carrying,specie,personality,description,image,genre, date_create)VALUES ('Baby',5,1,'MONTH', 'AVAILABLE','SMALL','DOG','PASSIVE','late muito e estranha as crianças','www.imagemcachorro-10-com.br','FEMALE', TIMESTAMP WITH TIME ZONE '2023-04-12T21:00:00Z')
+
+INSERT INTO role( id, name)VALUES (1 , 'READ_WRITE')
+INSERT INTO tb_tutor_role( tutor_id, role_id)VALUES ( 1, 1)

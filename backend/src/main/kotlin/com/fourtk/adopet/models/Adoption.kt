@@ -1,7 +1,7 @@
 package com.fourtk.adopet.models
 
-import jakarta.persistence.*
 import java.time.LocalDateTime
+import javax.persistence.*
 
 @Entity
 @Table(name = "tb_adoption")

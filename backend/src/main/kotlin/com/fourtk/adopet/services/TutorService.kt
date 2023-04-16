@@ -12,6 +12,7 @@ import com.fourtk.adopet.repositories.TutorRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
 
 @Service
@@ -22,7 +23,7 @@ class TutorService(
     private val tutorRepository: TutorRepository,
 
     val notFoundException: String = "Tutor not found!"
-) {
+) : UserDetailsService {
     fun insertTutor(tutorRequestDTO: TutorRequestDTO): TutorResponseDTO {
         val tutor = tutorRequestMapper.map(tutorRequestDTO)
         tutorRepository.save(tutor)
@@ -77,7 +78,7 @@ class TutorService(
         return tutorRepository.getOne(idOwner)
     }
 
-    fun loadUserByUsername(username: String?): UserDetails {
+    override fun loadUserByUsername(username: String?): UserDetails {
         val user = tutorRepository.findByEmail(username) ?: throw RuntimeException()
         return UserDetail(user)
     }

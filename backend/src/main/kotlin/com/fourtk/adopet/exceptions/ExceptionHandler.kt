@@ -1,12 +1,12 @@
 package com.fourtk.adopet.exceptions
 
 import com.fourtk.adopet.ErrorView
-import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import javax.servlet.http.HttpServletRequest
 
 @RestControllerAdvice
 class ExceptionHandler {
@@ -16,6 +16,7 @@ class ExceptionHandler {
     fun handlerNotFound(
         exception: NotFoundException,
         request: HttpServletRequest
+
     ): ErrorView {
         return ErrorView(
             status = HttpStatus.NOT_FOUND.value(),

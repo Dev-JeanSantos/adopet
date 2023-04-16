@@ -4,7 +4,6 @@ import com.fourtk.adopet.dtos.petrequest.ShelterRequestDTO
 import com.fourtk.adopet.dtos.shelterresponse.ResponsibleShelterResponseDTO
 import com.fourtk.adopet.dtos.shelterresponse.ShelterResponseDTO
 import com.fourtk.adopet.services.ShelterService
-import jakarta.validation.Valid
 import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -15,6 +14,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/shelters")

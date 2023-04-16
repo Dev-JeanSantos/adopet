@@ -4,7 +4,6 @@ import com.fourtk.adopet.dtos.tutorresponse.TutorResponseDTO
 import com.fourtk.adopet.dtos.tutorrequest.TutorRequestDTO
 import com.fourtk.adopet.dtos.tutorresponse.TutorResponsePaginationDTO
 import com.fourtk.adopet.services.TutorService
-import jakarta.validation.Valid
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
@@ -14,6 +13,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/tutors")

@@ -1,8 +1,8 @@
 package com.fourtk.adopet.models
 
 import com.fourtk.adopet.enums.*
-import jakarta.persistence.*
 import java.time.LocalDateTime
+import javax.persistence.*
 
 @Entity
 @Table(name = "tb_pet")

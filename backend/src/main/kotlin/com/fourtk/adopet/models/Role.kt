@@ -1,13 +1,16 @@
 package com.fourtk.adopet.models
 
-import jakarta.persistence.*
 import org.springframework.security.core.GrantedAuthority
+import javax.persistence.*
 
 @Entity
+
+@Table(name = "role")
 data class Role (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
     val name: String
-) : GrantedAuthority {
+)
+    : GrantedAuthority {
     override fun getAuthority() =  name
 }
