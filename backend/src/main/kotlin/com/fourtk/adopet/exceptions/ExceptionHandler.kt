@@ -48,7 +48,8 @@ class ExceptionHandler {
     ): ErrorView {
         val errorMessage = HashMap<String, String?>()
         exception.bindingResult.fieldErrors.forEach{
-                err -> errorMessage.put(err.field, err.defaultMessage)
+                err ->
+            errorMessage[err.field] = err.defaultMessage
         }
         return ErrorView(
             status = HttpStatus.INTERNAL_SERVER_ERROR.value(),

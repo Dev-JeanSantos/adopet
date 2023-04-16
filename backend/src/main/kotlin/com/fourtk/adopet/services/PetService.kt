@@ -9,6 +9,7 @@ import com.fourtk.adopet.mappers.PetResponseMapper
 import com.fourtk.adopet.mappers.PetResponsePaginationMapper
 import com.fourtk.adopet.models.Pet
 import com.fourtk.adopet.repositories.PetRepository
+import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
@@ -24,6 +25,7 @@ class PetService(
 
     val notFoundException: String = "Pet not found!"
 ) {
+    private val logger = LoggerFactory.getLogger(this::class.java)
     fun insertPet(petRequestDTO: PetRequestDTO): PetResponseDTO {
         val pet = petRequestMapper.map(petRequestDTO)
         petRepository.save(pet)
@@ -49,8 +51,16 @@ class PetService(
     }
 
     fun getById(id: Long): PetResponseDTO {
-        val possiblePet = petRepository.findById(id).orElseThrow { NotFoundException(notFoundException) }
-        return petResponseMapper.map(possiblePet)
+        try {
+            logger.info("Start getById - Service")
+            logger.info("validating if the adoption exists com idAdoption:${id} - Service")
+            val possiblePet = petRepository.findById(id).orElseThrow { NotFoundException(notFoundException) }
+            logger.info("End getById - Service")
+            return petResponseMapper.map(possiblePet)
+        } catch (e: Exception) {
+            throw e
+        }
+
     }
 
     fun update(id: Long, petRequestDTO: PetRequestDTO): PetResponseDTO? {
@@ -79,6 +89,13 @@ class PetService(
     }
 
     fun getByIdPet(id: Long): Pet? {
-        return petRepository.findByIdOrNull(id)
+        try {
+            logger.info("Start getById - Service")
+            logger.info("validating if the adoption exists com idAdoption:${id} - Service")
+            logger.info("End getById - Service")
+            return petRepository.findByIdOrNull(id)
+        } catch (e: Exception) {
+            throw e
+        }
     }
 }

@@ -55,16 +55,22 @@ class ShelterService(
         }
     }
 
-    fun report():List<ResponsibleShelterResponseDTO> {
+    fun report(): List<ResponsibleShelterResponseDTO> {
         return shelterRepository.report()
     }
 
     fun findShelterById(idShelter: Long): ShelterResponseDTO {
-        logger.info("Start findShelterByID idShelter:${idShelter} - Service")
-        logger.info("validating if the shelter exists com idShelter:${idShelter} - Service")
-        val possibleShelter = shelterRepository.findById(idShelter).orElseThrow { NotFoundException(notFoundMessage) }
-        logger.info("End findShelterByID - Service")
-        return shelterResponseMapper.map(possibleShelter)
+        try {
+            logger.info("Start findShelterByID idShelter:${idShelter} - Service")
+            logger.info("validating if the shelter exists com idShelter:${idShelter} - Service")
+            val possibleShelter =
+                shelterRepository.findById(idShelter).orElseThrow { NotFoundException(notFoundMessage) }
+            logger.info("End findShelterByID - Service")
+            return shelterResponseMapper.map(possibleShelter)
+        } catch (e: Exception) {
+            throw e
+        }
+
     }
 
     fun update(idShelter: Long, shelterRequestDTO: ShelterRequestDTO): ShelterResponseDTO? {
