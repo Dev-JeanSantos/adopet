@@ -45,9 +45,9 @@ class ShelterController (
 //    TODO: Implementar list de abrigos comtodos os pets inclusos (aninhado)
     }
 
-    @GetMapping("relatorio")
-    fun relatorio():List<ResponsibleShelterResponseDTO>{
-        return shelterService.relatorio()
+    @GetMapping("reports")
+    fun reports():List<ResponsibleShelterResponseDTO>{
+        return shelterService.report()
     }
 
     @GetMapping("/{idShelter}")

@@ -55,8 +55,8 @@ class ShelterService(
         }
     }
 
-    fun relatorio():List<ResponsibleShelterResponseDTO> {
-        return shelterRepository.relatorio()
+    fun report():List<ResponsibleShelterResponseDTO> {
+        return shelterRepository.report()
     }
 
     fun findShelterById(idShelter: Long): ShelterResponseDTO {
