@@ -2,6 +2,7 @@ package com.fourtk.adopet.services
 
 import com.fourtk.adopet.dtos.adoptionrequest.AdoptionRequestDTO
 import com.fourtk.adopet.dtos.adoptionresponse.AdoptionResponseDTO
+import com.fourtk.adopet.enums.PetStatus
 import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.AdoptionRequestMapper
 import com.fourtk.adopet.mappers.AdoptionResponseMapper
@@ -16,12 +17,14 @@ class AdoptionService(
     private val adoptionRequestMapper: AdoptionRequestMapper,
     private val adoptionResponseMapper: AdoptionResponseMapper,
     private val adoptionRepository: AdoptionRepository,
+    private val petService: PetService,
     val notFoundException: String = "Pet not found!"
 ) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
     fun insertAdoption(adoptionRequestDTO: AdoptionRequestDTO): AdoptionResponseDTO? {
         logger.info("Start insertAdoption, new adoption:${adoptionRequestDTO}- Service")
+        petService.updateStatus(adoptionRequestDTO.idPet, status = PetStatus.ADOPTED)
         val adoption = adoptionRequestMapper.map(adoptionRequestDTO)
             adoptionRepository.save(adoption)
         logger.info("End insertAdoption of Success - Service")

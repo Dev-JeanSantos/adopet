@@ -3,6 +3,7 @@ package com.fourtk.adopet.controllers
 import com.fourtk.adopet.dtos.petrequest.PetRequestDTO
 import com.fourtk.adopet.dtos.petresponse.PetResponseDTO
 import com.fourtk.adopet.dtos.petresponse.PetResponsePaginationDTO
+import com.fourtk.adopet.enums.PetStatus
 import com.fourtk.adopet.services.PetService
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -71,4 +72,28 @@ class PetController (
         petService.delete(id)
         logger.info("End deletePet - Controller")
     }
+
+    @PutMapping("/{id}/adopt")
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun makeStatusAdopt(@PathVariable id: Long) = petService.updateStatus(id, PetStatus.ADOPTED)
+
+    @PutMapping("/{id}/quarantine")
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun makeStatusQuarantine(@PathVariable id: Long) = petService.updateStatus(id, PetStatus.QUARANTINE)
+    @PutMapping("/{id}/removed")
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun makeStatusRemoved(@PathVariable id: Long) = petService.updateStatus(id, PetStatus.REMOVED)
+
+    @PutMapping("/{id}/suspended")
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun makeStatusSuspended(@PathVariable id: Long) = petService.updateStatus(id, PetStatus.SUSPENDED)
+
+    @PutMapping("/{id}/new")
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun makeStatusNew(@PathVariable id: Long) = petService.updateStatus(id, PetStatus.NEW)
 }

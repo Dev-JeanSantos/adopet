@@ -3,6 +3,7 @@ package com.fourtk.adopet.services
 import com.fourtk.adopet.dtos.petrequest.PetRequestDTO
 import com.fourtk.adopet.dtos.petresponse.PetResponseDTO
 import com.fourtk.adopet.dtos.petresponse.PetResponsePaginationDTO
+import com.fourtk.adopet.enums.PetStatus
 import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.PetRequestMapper
 import com.fourtk.adopet.mappers.PetResponseMapper
@@ -14,7 +15,9 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import kotlin.jvm.optionals.getOrNull
 
+@OptIn(ExperimentalStdlibApi::class)
 @Service
 class PetService(
     private val petRequestMapper: PetRequestMapper,
@@ -98,4 +101,11 @@ class PetService(
             throw e
         }
     }
+
+    fun updateStatus(id: Long, status: PetStatus) =
+        petRepository.findById(id).getOrNull()
+            ?.apply { this.status = status }
+            ?.also { petRepository.save(it) }
+
+
 }

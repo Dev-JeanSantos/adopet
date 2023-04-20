@@ -33,7 +33,6 @@ class AdoptionController(
         val uri = uriBuilder.path("/adoption/").build().toUri()
         logger.info("End insertAdoption - Controller")
         return ResponseEntity.created(uri).body(adoptionResponseDTO)
-//      TODO: Implementar a mudança de status do pet no momento da adoção
     }
 
     @GetMapping
