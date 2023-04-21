@@ -10,11 +10,11 @@ class TutorResponsePaginationMapper : Mapper<Tutor, TutorResponsePaginationDTO> 
         return TutorResponsePaginationDTO(
             name = t.name,
             email = t.email,
-            city = t.city,
-            address = t.address,
-            uf = t.uf,
-            image = t.image,
-            phone = t.phone,
+            city = t.city!!,
+            address = t.address!!,
+            uf = t.uf!!,
+            image = t.image!!,
+            phone = t.phone!!,
         )
     }
 

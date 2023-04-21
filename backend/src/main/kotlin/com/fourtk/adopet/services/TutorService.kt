@@ -38,11 +38,10 @@ class TutorService(
         pagination: Pageable
     ): Page<TutorResponsePaginationDTO> {
 
-        val tutors = if (nameTutor == null) {
-            tutorRepository.findAll(pagination)
-        } else {
+        val tutors = nameTutor?.let {
             tutorRepository.findByName(nameTutor, pagination)
-        }
+        }?:tutorRepository.findAll(pagination)
+
         return tutors.map { t ->
             tutorResponsePaginationMapper.map(t)
         }

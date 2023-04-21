@@ -30,6 +30,9 @@ class JWTUtil(
     }
 
     fun isValid(jwt: String?): Boolean {
+        if (jwt == null || jwt.trim().isEmpty() ){
+            return false
+        }
         return try {
             Jwts.parser().setSigningKey(secret.toByteArray()).parseClaimsJws(jwt)
             true

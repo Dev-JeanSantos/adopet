@@ -14,15 +14,15 @@ data class Tutor (
         var email: String,
         var password: String,
         @Column(nullable = false, unique = true)
-        var cpf: String,
-        var address: String,
-        var city: String,
-        var uf: String,
-        var phone: String,
-        var image: String?,
+        var cpf: String? = "",
+        var address: String? = "",
+        var city: String? = "",
+        var uf: String? = "",
+        var phone: String? = "",
+        var image: String? = "",
 
         @OneToMany(mappedBy = "responsible", cascade = [CascadeType.ALL], orphanRemoval = true)
-        val helters: List<Shelter>? = ArrayList(),
+        val shelters: List<Shelter>? = ArrayList(),
 
         @JsonIgnore
         @ManyToMany(fetch = FetchType.EAGER)

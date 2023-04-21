@@ -10,10 +10,10 @@ class AdoptionResponseMapper(
     override fun map(t: Adoption): AdoptionResponseDTO {
         return AdoptionResponseDTO(
             nameTutor = t.tutor.name,
-            phoneTutor = t.tutor.phone,
+            phoneTutor = t.tutor.phone!!,
             imageTutor = t.tutor.image,
-            city = t.tutor.city,
-            uf = t.tutor.uf,
+            city = t.tutor.city!!,
+            uf = t.tutor.uf!!,
             namePet = t.pet.name,
             nameShelter = t.pet.shelter!!.name,
             specie = t.pet.specie.name,
