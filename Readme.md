@@ -1,6 +1,13 @@
 # ADOPET - SISTEMA DE ADOÇÃO DE PETS
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/Dev-JeanSantos/adopet/blob/main/LICENCE)
 
+Documentação do projeto: https://backend-adopet.herokuapp.com/swagger-ui/index.html#/
+<br/> Backend:  https://backend-adopet.herokuapp.com
+<br/>
+>Dados de login para acesso ao token por ferramentas de Api Rest (Postman, Insomnia enter outras) : <br/>
+User: adopet@email.com <br/>
+Password: 123456
+
 # Sobre o projeto
 
 
