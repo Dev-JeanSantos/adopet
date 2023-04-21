@@ -41,7 +41,7 @@ class TutorController (
 
     @GetMapping("/{id}")
     fun getById(@PathVariable id: Long): TutorResponsePaginationDTO {
-        return tutorService.getById(id)
+        return tutorService.getByIdTutor(id)
     }
     @PutMapping("/{id}")
     @Transactional

@@ -47,7 +47,7 @@ class TutorService(
         }
     }
 
-    fun getById(id: Long): TutorResponsePaginationDTO {
+    fun getByIdTutor(id: Long): TutorResponsePaginationDTO {
         try {
             logger.info("Start getById - Service")
             logger.info("validating if the adoption exists com idAdoption:${id} - Service")
