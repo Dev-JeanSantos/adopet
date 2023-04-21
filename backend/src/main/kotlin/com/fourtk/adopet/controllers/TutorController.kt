@@ -4,6 +4,7 @@ import com.fourtk.adopet.dtos.tutorresponse.TutorResponseDTO
 import com.fourtk.adopet.dtos.tutorrequest.TutorRequestDTO
 import com.fourtk.adopet.dtos.tutorresponse.TutorResponsePaginationDTO
 import com.fourtk.adopet.services.TutorService
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder
 import javax.validation.Valid
 
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/tutors")
 class TutorController (
         private val tutorService: TutorService

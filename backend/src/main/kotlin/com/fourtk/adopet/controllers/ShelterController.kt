@@ -4,6 +4,7 @@ import com.fourtk.adopet.dtos.petrequest.ShelterRequestDTO
 import com.fourtk.adopet.dtos.shelterresponse.ResponsibleShelterResponseDTO
 import com.fourtk.adopet.dtos.shelterresponse.ShelterResponseDTO
 import com.fourtk.adopet.services.ShelterService
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -17,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder
 import javax.validation.Valid
 
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/shelters")
 class ShelterController (
         private val shelterService: ShelterService

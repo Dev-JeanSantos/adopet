@@ -5,6 +5,7 @@ import com.fourtk.adopet.dtos.petresponse.PetResponseDTO
 import com.fourtk.adopet.dtos.petresponse.PetResponsePaginationDTO
 import com.fourtk.adopet.enums.PetStatus
 import com.fourtk.adopet.services.PetService
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
@@ -19,6 +20,7 @@ import org.slf4j.LoggerFactory
 import javax.validation.Valid
 
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/pets")
 class PetController (
         private val petService: PetService

@@ -3,6 +3,7 @@ package com.fourtk.adopet.controllers
 import com.fourtk.adopet.dtos.adoptionrequest.AdoptionRequestDTO
 import com.fourtk.adopet.dtos.adoptionresponse.AdoptionResponseDTO
 import com.fourtk.adopet.services.AdoptionService
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder
 import javax.validation.Valid
 
 @RestController
+@SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/adoptions")
 class AdoptionController(
     private val adoptionService: AdoptionService
