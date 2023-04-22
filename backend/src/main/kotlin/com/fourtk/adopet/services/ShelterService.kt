@@ -1,13 +1,13 @@
 package com.fourtk.adopet.services
 
 import com.fourtk.adopet.dtos.petrequest.ShelterRequestDTO
-import com.fourtk.adopet.dtos.shelterresponse.ResponsibleShelterResponseDTO
 import com.fourtk.adopet.dtos.shelterresponse.ShelterResponseDTO
 import com.fourtk.adopet.exceptions.NotFoundException
 import com.fourtk.adopet.mappers.ShelterRequestMapper
 import com.fourtk.adopet.mappers.ShelterResponseMapper
 import com.fourtk.adopet.models.Shelter
 import com.fourtk.adopet.repositories.ShelterRepository
+import com.fourtk.adopet.vo.PetOfShelterVo
 import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -55,8 +55,8 @@ class ShelterService(
         }
     }
 
-    fun report(): List<ResponsibleShelterResponseDTO> {
-        return shelterRepository.report()
+    fun GetTotalPetsByShelter(): List<PetOfShelterVo> {
+        return shelterRepository.getTotalPetsByShelter()
     }
 
     fun findShelterById(idShelter: Long): ShelterResponseDTO {

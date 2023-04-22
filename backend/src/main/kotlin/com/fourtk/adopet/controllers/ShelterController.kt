@@ -1,9 +1,9 @@
 package com.fourtk.adopet.controllers
 
 import com.fourtk.adopet.dtos.petrequest.ShelterRequestDTO
-import com.fourtk.adopet.dtos.shelterresponse.ResponsibleShelterResponseDTO
 import com.fourtk.adopet.dtos.shelterresponse.ShelterResponseDTO
 import com.fourtk.adopet.services.ShelterService
+import com.fourtk.adopet.vo.PetOfShelterVo
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import org.slf4j.LoggerFactory
 import org.springframework.data.domain.Page
@@ -20,11 +20,12 @@ import javax.validation.Valid
 @RestController
 @SecurityRequirement(name = "bearerAuth")
 @RequestMapping("/shelters")
-class ShelterController (
-        private val shelterService: ShelterService
-){
+class ShelterController(
+    private val shelterService: ShelterService
+) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
+
     @PostMapping
     fun insertShelter(
         @RequestBody @Valid shelterRequestDTO: ShelterRequestDTO,
@@ -43,13 +44,13 @@ class ShelterController (
         @RequestParam(required = false) shelterName: String?, @RequestParam(required = false) shelterCity: String?,
         @PageableDefault(size = 5, sort = ["name"], direction = Sort.Direction.DESC) pagination: Pageable
     ): Page<ShelterResponseDTO> {
-        return shelterService.listar(shelterCity,shelterName, pagination)
+        return shelterService.listar(shelterCity, shelterName, pagination)
 //    TODO: Implementar list de abrigos comtodos os pets inclusos (aninhado)
     }
 
-    @GetMapping("reports")
-    fun reports():List<ResponsibleShelterResponseDTO>{
-        return shelterService.report()
+    @GetMapping("reports/totalpetsbyshelter")
+    fun getTotalPetsByShelter(): List<PetOfShelterVo> {
+        return shelterService.GetTotalPetsByShelter()
     }
 
     @GetMapping("/{idShelter}")
@@ -62,12 +63,12 @@ class ShelterController (
 
     @PutMapping("/{idShelter}")
     @Transactional
-    fun updateShelter(@PathVariable idShelter: Long, @RequestBody  @Valid shelterRequestDTO: ShelterRequestDTO )
-            : ResponseEntity<ShelterResponseDTO>  {
+    fun updateShelter(@PathVariable idShelter: Long, @RequestBody @Valid shelterRequestDTO: ShelterRequestDTO)
+            : ResponseEntity<ShelterResponseDTO> {
         logger.info("Start updatePet IdShelter:${idShelter} and new shelter:${shelterRequestDTO} - Controller")
         val shelterResponseDTO = shelterService.update(idShelter, shelterRequestDTO)
         logger.info("End updatePet - Controller")
-        return  ResponseEntity.ok().body(shelterResponseDTO)
+        return ResponseEntity.ok().body(shelterResponseDTO)
 //    TODO: resolver NullPoint associado aos pets
     }
 

@@ -33,8 +33,10 @@ class SecurityConfiguration(
         antMatchers(HttpMethod.POST,"/login")?.permitAll()?.
         antMatchers(HttpMethod.GET, "/swagger-ui/*")?.permitAll()?.
         antMatchers(HttpMethod.GET,"/v3/api-docs/**")?.permitAll()?.
+        antMatchers("/h2-console/**")?.permitAll()?.
         anyRequest()?.
         authenticated()?.
+        and()?.headers()?.frameOptions()?.sameOrigin()?.
         and()
         http?.addFilterBefore(JWTLoginFilter(authManager = authenticationManager(), jwtUtil = jwtUtil), UsernamePasswordAuthenticationFilter().javaClass)
         http?.addFilterBefore(JWTAuthenticationFilter(jwtUtil = jwtUtil), UsernamePasswordAuthenticationFilter().javaClass)
