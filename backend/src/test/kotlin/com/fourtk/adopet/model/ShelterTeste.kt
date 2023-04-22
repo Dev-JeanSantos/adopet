@@ -12,6 +12,7 @@ object ShelterTeste {
         address = "Rua A, 200 Centro",
         city = "Rio Bonito",
         uf = "RJ",
-        image = "canila.com.br"
+        image = "canila.com.br",
+        responsible = TutorTest.build(),
     )
 }
