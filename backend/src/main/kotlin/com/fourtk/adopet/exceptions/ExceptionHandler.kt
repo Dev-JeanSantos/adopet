@@ -1,6 +1,6 @@
 package com.fourtk.adopet.exceptions
 
-import com.fourtk.adopet.ErrorView
+import com.fourtk.adopet.exceptiondto.ErrorView
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler

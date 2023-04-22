@@ -1,4 +1,4 @@
-package com.fourtk.adopet
+package com.fourtk.adopet.exceptiondto
 
 import java.time.LocalDateTime
 

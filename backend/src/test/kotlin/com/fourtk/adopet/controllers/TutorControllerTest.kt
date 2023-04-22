@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.get
 import org.testcontainers.junit.jupiter.Testcontainers
 
 
-@Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 internal class TutorControllerTest {
 
@@ -30,7 +29,7 @@ internal class TutorControllerTest {
 
     companion object {
         private const val TOKEN = "%s"
-        private const val RECURSO = "/pets"
+        private const val RECURSO = "/tutors/"
         private const val RECURSO_ID = RECURSO.plus("%s")
     }
 
@@ -43,24 +42,33 @@ internal class TutorControllerTest {
             ).build()
     }
 
-//    @Test
-//    fun `Should return 400 when triggering a token less request`() {
-//        mockMvc.get(RECURSO).andExpect { status { is4xxClientError() } }
-//    }
+    @Test
+    fun `Should return 400 when triggering a token less request`() {
+        mockMvc.get(RECURSO).andExpect { status { is4xxClientError() } }
+    }
+    @Test
+    fun `should return code 200 when calling tutors and user is authenticated`() {
+        mockMvc.get(RECURSO) {
+            headers { this.setBearerAuth(TOKEN.format(jwt)) }
+        }.andExpect { status { isOk() } }
+    }
 
-//    @Test
-//    fun `should return code 200 when calling topics and user is authenticated`(){
-//        mockMvc.get(RECURSO){
-//            headers {this.setBearerAuth(TOKEN.format(jwt))}
-//        }.andExpect { status { isOk() } }
-//    }
-//
-//    @Test
-//    fun `should return code 404 when calling topics by id that does not exist even with an authenticated user`(){
-//        mockMvc.get(RECURSO_ID.format(1)){
-//            headers {this.setBearerAuth(TOKEN.format(jwt))}
-//        }.andExpect { status { is4xxClientError()} }
-//    }
+    @Test
+    fun `should return code 200 when calling tutors by id and user is authenticated`() {
+        mockMvc.get(RECURSO_ID.format(1)) {
+            headers { this.setBearerAuth(TOKEN.format(jwt)) }
+        }.andExpect { status { isOk() } }
+    }
+
+
+    @Test
+    fun `should return code 404 when calling topics by id that does not exist even with an authenticated user`(){
+        mockMvc.get(RECURSO_ID.format(100)){
+            headers {this.setBearerAuth(TOKEN.format(jwt))}
+        }.andExpect { status { is4xxClientError()} }
+    }
+
+
 
 
     private fun gerarToken(): String? {

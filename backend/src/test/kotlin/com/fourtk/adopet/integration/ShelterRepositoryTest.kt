@@ -12,11 +12,13 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.data.domain.PageRequest
 import org.springframework.test.context.DynamicPropertyRegistry
 import org.springframework.test.context.DynamicPropertySource
 import org.testcontainers.containers.MySQLContainer
 import org.testcontainers.junit.jupiter.Container
 import org.testcontainers.junit.jupiter.Testcontainers
+
 
 @DataJpaTest
 @Testcontainers
@@ -32,9 +34,9 @@ class ShelterRepositoryTest {
     @Autowired
     private lateinit var repositoryTutor: TutorRepository
 
-    private val tutor = TutorTest.build()
-    private val shelter = ShelterTeste.build()
-    private val pet = PetTest.build()
+    val tutor = TutorTest.build()
+    val shelter = ShelterTeste.build()
+    val pet = PetTest.build()
 
     companion object {
 
@@ -57,7 +59,7 @@ class ShelterRepositoryTest {
     @Test
     fun `Should generate a report of the number of pets per shelter`() {
 
-        val tutors =repositoryTutor.save(tutor)
+        val tutors = repositoryTutor.save(tutor)
         val shelters = repositoryShelter.save(shelter)
         val pets = repositoryPet.save(pet)
 
@@ -66,4 +68,29 @@ class ShelterRepositoryTest {
         assertThat(reporters).isNotNull
         assertThat(reporters.first()).isExactlyInstanceOf(PetOfShelterVo::class.java)
     }
+//    @Test
+//    fun `Should list shelters by name`() {
+//
+//        val tutors = repositoryTutor.save(tutor)
+//        val shelters = repositoryShelter.save(shelter)
+//
+//        val shelter = repositoryShelter.findByName(shelters.name, PageRequest.of(0, 5))
+//
+//        assertThat(shelter).isNotNull
+//        assertThat(shelter.first().name).isExactlyInstanceOf(shelters.name::class.java)
+//
+//    }
+//
+//    @Test
+//    fun `Should list shelters by city`() {
+//
+//        val tutors = repositoryTutor.save(tutor)
+//        val shelters = repositoryShelter.save(shelter)
+//
+//        val shelter = repositoryShelter.findByCity(shelters.city, PageRequest.of(0, 5))
+//
+//        assertThat(shelter).isNotNull
+//        assertThat(shelter.first().city).isExactlyInstanceOf(shelters.city::class.java)
+//
+//    }
 }

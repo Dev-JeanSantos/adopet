@@ -6,7 +6,7 @@ object UserTest {
     fun build() = Tutor(
         id = 1,
         name = "Joao Pedro",
-        email = "email@gmail.com",
-        password = ""
+        email = "jeancbsan@email.com",
+        password = "123456"
     )
 }
