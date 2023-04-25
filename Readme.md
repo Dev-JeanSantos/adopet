@@ -19,7 +19,7 @@ A aplicação consiste no cadastro e gerenciamento de pets, abrigos e tutores (u
 
 ## Layout web
 
-![Web 1](https://github.com/Dev-JeanSantos/assets/blob/main/adopet/home_adopet.jpg)
+![Web 1](https://github.com/Dev-JeanSantos/assets/blob/main/adopet/home_adopet.jpg #vitrinedev) 
 
 ![Web 2](https://github.com/Dev-JeanSantos/assets/blob/main/adopet/listar_pets_adopet.jpg)
 
